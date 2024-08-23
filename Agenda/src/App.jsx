@@ -2,9 +2,20 @@ import { useState } from 'react'
 import Contact from './components/Contact'
 
 const App = () => {
-  const [contacts, setContacts] = useState([]) 
+  const [contacts, setContacts] = useState([
+    { name: 'Arto Hellas', phone: '661 849 129'},
+    { name: 'Ada Lovelace', phone: '618 810 481'},
+    { name: 'Dan Abramov', phone: '91 84 19 182' },
+    { name: 'Mary Poppendieck', phone: '651 183 501' }
+  ]) 
+
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
+  const [filter, setFilter] = useState('')
+
+  let filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
+
+  if(filteredContacts.length === 0) filteredContacts = contacts
 
 
   const handleChangeName = (event) => {
@@ -14,6 +25,10 @@ const App = () => {
 
   const handleChangePhone = (event) => {
     setNewPhone(event.target.value) // recuperar el input 2
+  }
+
+  const handleChangeFilter = (event) => {
+    setFilter(event.target.value)
   }
 
   const addContact = (event) => {
@@ -48,8 +63,10 @@ const App = () => {
   return (
     <div>
       <h2>Contactos</h2>
+      <input type='text' placeholder='Búsqueda' onChange={handleChangeFilter}/>
+
       <ul>
-          {contacts.map(contact =>
+          {filteredContacts.map(contact =>
             <Contact contact={contact.name} number={contact.phone} key={contact.name}/>
           )}
       </ul>
