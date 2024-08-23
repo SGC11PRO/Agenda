@@ -1,8 +1,8 @@
 import React from "react"
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, number }) => {
     return (
-      <li>{contact}</li>
+      <li><strong>{contact}</strong> : {number}</li>
     )
   }
 
