@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 // paginas
 import Homepage from './pages/Homepage'
@@ -115,30 +116,43 @@ const App = () => {
 
   // return
   return (
-    <div>
-      <nav>
-        <p>PhoneBook</p>
-        <div>
-          <a href="/">All Contacts</a>
-          <a href="/create">New Contact</a>
-        </div>
-      </nav>
+    <Router>
+      <div>
+        <nav>
+          <p>PhoneBook</p>
+          <div>
+            <Link to='/'>All Contacts</Link>
+            <Link to='/create'>New Contact</Link>
+          </div>
+        </nav>
 
-      <Homepage 
-        filteredContacts={filteredContacts} 
-        deleteContact={deleteContact} 
-        handleChangeFilter={handleChangeFilter}
-      />
+        <Routes>
+          <Route path='/' element=
+          {
+            <Homepage 
+              filteredContacts={filteredContacts} 
+              deleteContact={deleteContact} 
+              handleChangeFilter={handleChangeFilter}
+            />
+          }
+          />
 
-      <AddContact 
-        addContact={addContact} 
-        handleChangeName={handleChangeName} 
-        handleChangePhone={handleChangePhone} 
-        newName={newName} 
-        newPhone={newPhone}
-      />
+          <Route path='/create' element=
+          {          
+            <AddContact 
+              addContact={addContact} 
+              handleChangeName={handleChangeName} 
+              handleChangePhone={handleChangePhone} 
+              newName={newName} 
+              newPhone={newPhone}
+            />
+          }
+          />
+        </Routes>
 
-    </div>
+
+      </div>
+    </Router>
   )
 }
 
