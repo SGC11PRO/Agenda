@@ -59,12 +59,13 @@ const App = () => {
 
     const newContact = {
       name: newName,
-      phone: newPhone
+      phone: newPhone,
+      id: contacts.length + 1
     }
 
     // envia el nuevo obj al servidor
     axios
-      .post('http://localhost:3001/contacts', newContact)
+      .post('http://localhost:3001/contacts', newContact, newContact.id)
       .then(response => {
 
         setContacts(contacts.concat(response.data))
