@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+// paginas
+import Homepage from './pages/Homepage'
+import AddContact from './pages/AddContact'
+
 // componentes
 import Filter from './components/Filter'
 import AddContactForm from './components/AddContactForm'
+
+import './index.css'
 
 const App = () => {
 
@@ -60,7 +66,7 @@ const App = () => {
     const newContact = {
       name: newName,
       phone: newPhone,
-      id: contacts.length + 1
+      id: String(contacts.length + 1)
     }
 
     // envia el nuevo obj al servidor
@@ -110,11 +116,21 @@ const App = () => {
   // return
   return (
     <div>
-      <h2>Contactos</h2>
+      <nav>
+        <p>PhoneBook</p>
+        <div>
+          <a href="/">All Contacts</a>
+          <a href="/create">New Contact</a>
+        </div>
+      </nav>
 
-      <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter} deleteContact={deleteContact}/>
+      <Homepage 
+        filteredContacts={filteredContacts} 
+        deleteContact={deleteContact} 
+        handleChangeFilter={handleChangeFilter}
+      />
 
-      <AddContactForm 
+      <AddContact 
         addContact={addContact} 
         handleChangeName={handleChangeName} 
         handleChangePhone={handleChangePhone} 

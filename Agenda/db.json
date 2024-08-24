@@ -1,14 +1,9 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "Sergio G",
-      "phone": "612 345 678"
-    },
-    {
-      "id": 2,
-      "name": "Ada Lovelace",
-      "phone": "123 456 789"
+      "id": "1",
+      "name": "Sergio Garcia",
+      "phone": "635 89 60 13"
     }
   ]
 }
