@@ -1,23 +1,45 @@
-import { useState } from 'react'
-import Contact from './components/Contact'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
+// componentes
+import Filter from './components/Filter'
+import AddContactForm from './components/AddContactForm'
 
 const App = () => {
-  const [contacts, setContacts] = useState([
-    { name: 'Arto Hellas', phone: '661 849 129'},
-    { name: 'Ada Lovelace', phone: '618 810 481'},
-    { name: 'Dan Abramov', phone: '91 84 19 182' },
-    { name: 'Mary Poppendieck', phone: '651 183 501' }
-  ]) 
+
+  // variables
+  const [contacts, setContacts] = useState([]) 
+
+  // test
+  // const [notes, setNotes] = useState([])
 
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
   const [filter, setFilter] = useState('')
 
+  // filtered contacts
   let filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
 
-  if(filteredContacts.length === 0) filteredContacts = contacts
+  if(filteredContacts.length === 0) filteredContacts = contacts // show all contacts if no filter
 
 
+  // ---
+  useEffect(() => {
+    console.log('useEffect')
+
+    axios
+      .get('http://localhost:3001/contacts')
+      .then(response => {
+        console.log('Promise fulfilled')
+        setContacts(response.data)
+      })
+  }, [])
+
+  // see order of events
+  console.log('render', contacts.length, 'notes')
+
+
+  // Funciones
   const handleChangeName = (event) => {
 
     setNewName(event.target.value) // recuperar el input
@@ -40,6 +62,15 @@ const App = () => {
       phone: newPhone
     }
 
+    // envia el nuevo obj al servidor
+    axios
+      .post('http://localhost:3001/contacts', newContact)
+      .then(response => {
+
+        setContacts(contacts.concat(response.data))
+        console.log(response)
+      })
+
     // verifica si el contacto ya existe
     const contactExists = contacts.some(contact => contact.name === newContact.name)
 
@@ -60,30 +91,22 @@ const App = () => {
     setNewPhone('')
   }
 
+
+  // return
   return (
     <div>
       <h2>Contactos</h2>
-      <input type='text' placeholder='Búsqueda' onChange={handleChangeFilter}/>
 
-      <ul>
-          {filteredContacts.map(contact =>
-            <Contact contact={contact.name} number={contact.phone} key={contact.name}/>
-          )}
-      </ul>
+      <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter}/>
 
-      <form>
+      <AddContactForm 
+        addContact={addContact} 
+        handleChangeName={handleChangeName} 
+        handleChangePhone={handleChangePhone} 
+        newName={newName} 
+        newPhone={newPhone}
+      />
 
-        <div>
-          Agregar Contacto : <br />
-          <input onChange={handleChangeName} value={newName} type='text' placeholder='Nombre' /><br />
-          <input onChange={handleChangePhone} value={newPhone} type="tel" placeholder='Telefono' />
-        </div>
-
-        <div>
-          <input type='submit' onClick={addContact} />
-        </div>
-
-      </form>
     </div>
   )
 }
