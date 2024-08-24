@@ -6,11 +6,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Homepage from './pages/Homepage'
 import AddContact from './pages/AddContact'
 
-// componentes
-import Filter from './components/Filter'
-import AddContactForm from './components/AddContactForm'
-
 import './index.css'
+
 
 const App = () => {
 
@@ -118,12 +115,12 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <p>PhoneBook</p>
-          <div>
-            <Link to='/'>All Contacts</Link>
-            <Link to='/create'>New Contact</Link>
-          </div>
+        <nav className='navbar'>
+          <p className='logo'><span>Phone</span>Book</p>
+          <ul className='links'>
+            <li><Link to='/'>All Contacts</Link></li>
+            <li><Link to='/create'>New Contact</Link></li>
+          </ul>
         </nav>
 
         <Routes>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --light-color: #f4effa;
+    --main-color: #532b88;
+    --accent-color: #fdc500;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Inter';
+}
+
+li {
+    list-style: none;
+}
+
+span {
+    color: var(--accent-color);
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: rgba(9, 1, 57, 0.8);
+    height: 30px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--light-color);
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.navbar a {
+    color: var(--light-color);
+    font-weight: 500;
+    
+    position: relative;
+
+    padding-bottom: 5px; /* Espacio adicional para el subrayado */
+    display: inline-block; /* Asegura que el enlace actúe como bloque en línea */
+}
+
+/* Estilo del subrayado */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: blue;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto de subrayado al pasar el cursor */
+.navbar a:hover::after {
+    width: 100%;
+    background-color: var(--accent-color); /* Color del subrayado */
+}
