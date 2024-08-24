@@ -10,8 +10,10 @@ const Homepage = ({ filteredContacts, handleChangeFilter, deleteContact}) => {
             <img src="./../../public/Gradient.svg"/>
             <div className="homepage">
                 <h2>Contactos</h2>
-
-                <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter} deleteContact={deleteContact}/>
+                
+                <div className="card">
+                    <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter} deleteContact={deleteContact}/> 
+                </div>
             </div>
         </>
     )
