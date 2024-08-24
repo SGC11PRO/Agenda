@@ -92,13 +92,27 @@ const App = () => {
     setNewPhone('')
   }
 
+  const deleteContact = (id) => {
+
+    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este contacto?')
+    
+    if(confirmDelete) 
+    {
+      axios
+        .delete(`http://localhost:3001/contacts/${id}`)
+        .then(() => {
+          setContacts(contacts.filter(contact => contact.id !== id))
+        })
+    }
+  }
+
 
   // return
   return (
     <div>
       <h2>Contactos</h2>
 
-      <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter}/>
+      <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter} deleteContact={deleteContact}/>
 
       <AddContactForm 
         addContact={addContact} 

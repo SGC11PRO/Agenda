@@ -2,28 +2,13 @@
   "contacts": [
     {
       "id": 1,
-      "name": "Arto Hellas",
-      "phone": "040-123456"
+      "name": "Sergio G",
+      "phone": "612 345 678"
     },
     {
       "id": 2,
       "name": "Ada Lovelace",
-      "phone": "39-44-5323523"
-    },
-    {
-      "id": 3,
-      "name": "Dan Abramov",
-      "phone": "12-43-234345"
-    },
-    {
-      "id": 4,
-      "name": "Mary Poppendieck",
-      "phone": "39-23-6423122"
-    },
-    {
-      "id": 5,
-      "name": "Sergio Garcia",
-      "phone": "635 89 60 13"
+      "phone": "123 456 789"
     }
   ]
 }

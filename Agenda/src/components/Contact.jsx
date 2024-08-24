@@ -1,8 +1,11 @@
 import React from "react"
 
-const Contact = ({ contact, number }) => {
+const Contact = ({ contact, deleteContact }) => {
     return (
-      <li><strong>{contact}</strong> : {number}</li>
+      <li>
+        <strong>{contact.name}</strong> : {contact.phone}
+        <button onClick={() => deleteContact(contact.id)}>Borrar</button>
+      </li>
     )
   }
 
