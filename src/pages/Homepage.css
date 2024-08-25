@@ -97,12 +97,16 @@ h2 {
         padding: 20px; /* Reducir padding */
     }
 
+    .contact-list {
+        width: 300px; /* Hacer la tarjeta más ancha en pantallas pequeñas */
+    }
+
     .card {
-        width: 90%; /* Hacer la tarjeta más ancha en pantallas pequeñas */
+        width: 300px;
     }
 
     .filter {
-        width: 100%;
+        width: 300px;
         font-size: 14px; /* Reducir el tamaño del texto en el filtro */
         padding-left: 15px; /* Reducir el padding */
     }
@@ -129,10 +133,11 @@ h2 {
     }
 
     .card {
-        width: 100%; /* Hacer la tarjeta ocupar todo el ancho disponible */
+        width: 250px; /* Hacer la tarjeta ocupar todo el ancho disponible */
     }
 
     .filter {
+        width: 250px;
         font-size: 12px; /* Reducir tamaño de fuente en pantallas muy pequeñas */
         padding-left: 10px; /* Ajustar padding */
     }
