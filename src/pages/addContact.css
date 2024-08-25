@@ -69,3 +69,47 @@ form {
 .submit:hover {
     background-color: var(--main-color);
 }
+
+/* Media Queries para Dispositivos Móviles y Tablets */
+@media (max-width: 768px) {
+    .add-page {
+        margin-top: 50px; /* Reducir margen en pantallas más pequeñas */
+    }
+
+    .text-fields {
+        flex-direction: column; /* Apilar campos en pantallas pequeñas */
+        gap: 10px; /* Reducir el espacio entre campos */
+    }
+
+    .name, .phone {
+        width: 100%; /* Hacer los campos ocupar el ancho completo */
+        font-size: 14px; /* Reducir el tamaño del texto en campos */
+        padding-left: 15px; /* Reducir el padding */
+    }
+
+    .submit {
+        width: 100%; /* Hacer el botón ocupar el ancho completo */
+        font-size: 14px; /* Reducir el tamaño del texto en el botón */
+    }
+}
+
+@media (max-width: 480px) {
+    .add-page {
+        margin-top: 30px; /* Reducir margen en pantallas muy pequeñas */
+    }
+
+    .text-fields {
+        gap: 10px; /* Ajustar el espacio entre campos */
+    }
+
+    .name, .phone {
+        font-size: 12px; /* Reducir aún más el tamaño del texto */
+        height: 35px; /* Ajustar la altura de los campos */
+        padding-left: 10px; /* Ajustar el padding */
+    }
+
+    .submit {
+        font-size: 12px; /* Reducir el tamaño de la fuente del botón */
+        height: 35px; /* Ajustar la altura del botón */
+    }
+}

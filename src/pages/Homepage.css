@@ -84,3 +84,65 @@ h2 {
     position: absolute;
     bottom: 50px;
 }
+
+/* ------------------------------- Media Queries -------------------------------------------------------- */
+/* Media Queries para Dispositivos Móviles y Tablets */
+@media (max-width: 768px) {
+    .homepage {
+        margin-top: 50px; /* Reducir margen en pantallas más pequeñas */
+    }
+
+    h2 {
+        font-size: 2.5rem; /* Reducir tamaño del texto en pantallas más pequeñas */
+        padding: 20px; /* Reducir padding */
+    }
+
+    .card {
+        width: 90%; /* Hacer la tarjeta más ancha en pantallas pequeñas */
+    }
+
+    .filter {
+        width: 100%;
+        font-size: 14px; /* Reducir el tamaño del texto en el filtro */
+        padding-left: 15px; /* Reducir el padding */
+    }
+
+    .alert {
+        font-size: 1.2rem; /* Reducir el tamaño de la fuente de la alerta */
+        width: 90%; /* Ajustar al contenedor */
+    }
+
+    .hint {
+        font-size: 18px; /* Reducir tamaño de fuente para pantallas pequeñas */
+        bottom: 30px; /* Ajustar la posición en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage {
+        margin-top: 30px; /* Reducir margen en pantallas muy pequeñas */
+    }
+
+    h2 {
+        font-size: 2rem; /* Reducir aún más el tamaño del texto */
+        padding: 10px; /* Ajustar padding */
+    }
+
+    .card {
+        width: 100%; /* Hacer la tarjeta ocupar todo el ancho disponible */
+    }
+
+    .filter {
+        font-size: 12px; /* Reducir tamaño de fuente en pantallas muy pequeñas */
+        padding-left: 10px; /* Ajustar padding */
+    }
+
+    .alert {
+        font-size: 1rem; /* Reducir el tamaño de la fuente */
+    }
+
+    .hint {
+        font-size: 16px; /* Reducir tamaño de fuente */
+        bottom: 20px; /* Ajustar la posición en pantallas muy pequeñas */
+    }
+}
