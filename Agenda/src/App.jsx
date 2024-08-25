@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 // paginas
 import Homepage from './pages/Homepage'
@@ -8,8 +7,13 @@ import AddContact from './pages/AddContact'
 
 import './app.css'
 
+// servicios
+import contactService from './services/contacts'
+
 
 const App = () => {
+
+  // hooks
 
   // variables
   const [contacts, setContacts] = useState([]) 
@@ -25,20 +29,17 @@ const App = () => {
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
 
 
+  // axios
+  const baseURL = 'http://localhost:3001/api/contacts'
+
   // ---
   useEffect(() => {
-    console.log('useEffect')
-
-    axios
-      .get('http://localhost:3001/contacts')
-      .then(response => {
-        console.log('Promise fulfilled')
-        setContacts(response.data)
+    contactService
+      .getAll()
+      .then(initialContacts => {
+        setContacts(initialContacts)
       })
   }, [])
-
-  // see order of events
-  console.log('render', contacts.length, 'notes')
 
 
   // Funciones
@@ -56,12 +57,13 @@ const App = () => {
   }
 
   const addContact = (event) => {
-
+    
     event.preventDefault()
+    
 
     const newContact = {
       name: newName,
-      phone: newPhone,
+      number: newPhone,
       id: String(contacts.length + 1)
     }
 
@@ -76,7 +78,7 @@ const App = () => {
     else 
     {
       // añadir al array
-      if(newContact.name.length === 0 || newContact.phone.length === 0) {
+      if(newContact.name.length === 0 || newContact.number.length === 0) {
 
         // se necesitan todos los campos rellenados
         alert('Rellena todos los campos para continuar') 
@@ -84,23 +86,26 @@ const App = () => {
       else 
       {
         // envia el nuevo obj al servidor
-        axios
-          .post('http://localhost:3001/contacts', newContact, newContact.id)
-          .then(response => {
+        contactService
+          .create(newContact)
+          .then(returnedContact => {
 
-            setContacts(contacts.concat(response.data))
-            console.log(response)
+            setContacts(contacts.concat(returnedContact))
+
+            event.preventDefault()
+
+            // limpiar input
+            setNewName('')
+            setNewPhone('')
+
+            console.log('Contact Created')
+
           })
 
-        // Añadir el contacto
-        setContacts(contacts.concat(newContact))
-
-        // limpiar input
-        setNewName('')
-        setNewPhone('')
-
-        // redirige a la homepage
-        useNavigate('/')
+          .catch(error => {
+            console.error('Error al crear el contacto', error)
+            alert('Ha ocurrido un error')
+          })
       }
 
     }
@@ -114,8 +119,8 @@ const App = () => {
     
     if(confirmDelete) 
     {
-      axios
-        .delete(`http://localhost:3001/contacts/${id}`)
+      contactService
+        .remove(id)
         .then(() => {
           setContacts(contacts.filter(contact => contact.id !== id))
         })
