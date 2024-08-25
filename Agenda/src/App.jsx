@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react
 import Homepage from './pages/Homepage'
 import AddContact from './pages/AddContact'
 
-import './index.css'
+import './app.css'
 
 
 const App = () => {
