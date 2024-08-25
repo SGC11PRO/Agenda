@@ -5,15 +5,12 @@ const AddContactForm = ({handleChangeName, handleChangePhone, newPhone, newName,
         <>
         <form>
 
-            <div>
-            Agregar Contacto : <br />
-            <input onChange={handleChangeName} value={newName} type='text' placeholder='Nombre' /><br />
-            <input onChange={handleChangePhone} value={newPhone} type="tel" placeholder='Telefono' />
+            <div className="text-fields">
+            <input className='name' onChange={handleChangeName} value={newName} type='text' placeholder='Nombre'/>
+            <input className='phone' onChange={handleChangePhone} value={newPhone} type="tel" placeholder='Telefono'/>
             </div>
 
-            <div>
-            <input type='submit' onClick={addContact} />
-            </div>
+            <input className="submit" type='submit' onClick={addContact} />
 
         </form>
         

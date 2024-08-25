@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --light-color: #f4effa;
-    --main-color: #532b88;
-    --accent-color: #fdc500;
+    --light-color: #F3F3F4;
+    --main-color: #7435B3;
+    --accent-color: #F7B801;
+    --dark-color: rgb(24, 22, 34);
+    --error-color: rgb(182, 45, 43);
+
 }
 
 * {
@@ -29,7 +32,7 @@ span {
     align-items: center;
     justify-content: space-between;
     padding: 20px 40px;
-    background-color: rgba(9, 1, 57, 0.8);
+    background-color: rgba(12, 11, 17, 0.7);
     height: 30px;
 }
 
@@ -56,6 +59,11 @@ span {
     display: inline-block; /* Asegura que el enlace actúe como bloque en línea */
 }
 
+.navbar a:hover{
+    color: var(--accent-color);
+    transition: 0.3s ease;
+}
+
 /* Estilo del subrayado */
 .navbar a::after {
     content: '';
@@ -64,8 +72,8 @@ span {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: blue;
-    transition: width 0.3s ease, background-color 0.3s ease;
+    background-color: var(--main-color);
+    transition: width 0.35s ease, background-color 0.15s ease;
 }
 
 /* Efecto de subrayado al pasar el cursor */

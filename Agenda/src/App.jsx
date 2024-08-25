@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 
 // paginas
 import Homepage from './pages/Homepage'
@@ -22,9 +22,7 @@ const App = () => {
   const [filter, setFilter] = useState('')
 
   // filtered contacts
-  let filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
-
-  if(filteredContacts.length === 0) filteredContacts = contacts // show all contacts if no filter
+  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
 
 
   // ---
@@ -67,14 +65,7 @@ const App = () => {
       id: String(contacts.length + 1)
     }
 
-    // envia el nuevo obj al servidor
-    axios
-      .post('http://localhost:3001/contacts', newContact, newContact.id)
-      .then(response => {
 
-        setContacts(contacts.concat(response.data))
-        console.log(response)
-      })
 
     // verifica si el contacto ya existe
     const contactExists = contacts.some(contact => contact.name === newContact.name)
@@ -85,15 +76,36 @@ const App = () => {
     else 
     {
       // añadir al array
-      newContact.name.length === 0 || newContact.phone.length === 0
-        ? alert('Rellena todos los campos para continuar') 
-        : setContacts(contacts.concat(newContact))
+      if(newContact.name.length === 0 || newContact.phone.length === 0) {
+
+        // se necesitan todos los campos rellenados
+        alert('Rellena todos los campos para continuar') 
+      }
+      else 
+      {
+        // envia el nuevo obj al servidor
+        axios
+          .post('http://localhost:3001/contacts', newContact, newContact.id)
+          .then(response => {
+
+            setContacts(contacts.concat(response.data))
+            console.log(response)
+          })
+
+        // Añadir el contacto
+        setContacts(contacts.concat(newContact))
+
+        // limpiar input
+        setNewName('')
+        setNewPhone('')
+
+        // redirige a la homepage
+        useNavigate('/')
+      }
 
     }
 
-    // limpiar input
-    setNewName('')
-    setNewPhone('')
+
   }
 
   const deleteContact = (id) => {

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --light-color: #F3F3F4;
+    --main-color: #7435B3;
+    --accent-color: #F7B801;
+    --dark-color: rgb(24, 22, 34);
+    --error-color: rgb(182, 45, 43);
+
+}
+
+.add-page {
+    display: grid;
+    place-items: center;
+    margin-top: 100px;
+}
+
+.text-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+form {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.name, .phone {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+
+    color: var(--light-color);
+    padding-left: 20px;
+
+    outline: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0.8rem;
+}
+
+.name:focus-visible, .phone:focus-visible {
+    border: 2.5px solid var(--main-color);
+    
+}
+
+.submit {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+
+    color: var(--light-color);
+
+    outline: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0.8rem;
+
+    cursor: pointer;
+
+    transition: 0.2s ease-in-out;
+}
+
+.submit:hover {
+    background-color: var(--main-color);
+}
