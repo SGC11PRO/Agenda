@@ -2,11 +2,13 @@ import React from "react"
 import AddContactForm from "../components/AddContactForm"
 
 import './addContact.css'
+import background from './../../dist/Gradient.png'
+
 
 const AddContact = ({ addContact, handleChangeName, handleChangePhone, newName, newPhone}) => {
     return(
         <>
-        <img src="./../../public/Gradient.png" />
+        <img src={background}/>
         <div className="add-page">
             <h2>Crear Contacto</h2>
             <AddContactForm className='form' 

@@ -2,6 +2,7 @@ import React from "react"
 import Filter from "../components/Filter"
 
 import './Homepage.css'
+import background from './../../dist/Gradient.png'
 
 
 const Homepage = ({ filteredContacts, handleChangeFilter, deleteContact, redirectToNewContact}) => {
@@ -10,7 +11,7 @@ const Homepage = ({ filteredContacts, handleChangeFilter, deleteContact, redirec
     {
         return (
             <>
-                <img src="./../../public/Gradient.png"/>
+                <img src={background}/>
                 <div className="homepage">
                     <h2>Contactos</h2>
                     
