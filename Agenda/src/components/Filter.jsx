@@ -4,7 +4,7 @@ import Contact from './Contact'
 const Filter = ({ filteredContacts, handleChangeFilter, deleteContact }) => {
     return (
         <>
-        <input type='text' placeholder='Búsqueda' onChange={handleChangeFilter}/>
+        <input className='filter' type='text' placeholder='Búsqueda' onChange={handleChangeFilter}/>
 
         <ul>
             {filteredContacts.map(contact =>

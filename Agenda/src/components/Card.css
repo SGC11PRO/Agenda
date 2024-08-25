@@ -1,0 +1,68 @@
+:root {
+    --light-color: #f4effa;
+    --main-color: #532b88;
+    --accent-color: #fdc500;
+
+}
+
+* {
+    font-family: 'Inter';
+}
+
+.contacts-list {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    border-radius: 5px; 
+
+    width: 350px;
+    height: 30px;
+}
+
+.contact-list
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+}
+
+.contact-name {
+    color: var(--light-color);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.contact-phone {
+    color: var(--accent-color);
+    text-align: left;
+    font-weight: 350;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.delete-contact-btn {
+    height: 45px;
+    width: 45px;
+
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.icon {
+    color: #B62D2B;
+    height: 25px;
+    width: auto;
+}

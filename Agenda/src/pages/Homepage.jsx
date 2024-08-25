@@ -7,7 +7,7 @@ import './Homepage.css'
 const Homepage = ({ filteredContacts, handleChangeFilter, deleteContact}) => {
     return (
         <>
-            <img src="./../../public/Gradient.svg"/>
+            <img src="./../../public/Gradient.png"/>
             <div className="homepage">
                 <h2>Contactos</h2>
                 
