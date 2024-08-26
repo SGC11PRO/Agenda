@@ -13,7 +13,9 @@
 }
 
 img {
-    position: absolute;
+    position: fixed;
+    object-fit: cover;
+
     top: 0;
     z-index: -1;
     width: 100%;
@@ -25,13 +27,16 @@ img {
 .homepage {
     display: grid;
     place-items: center;
-    margin-top: 100px;
+
+    padding: 80px;
 }
 
 h2 {
     font-size: 3rem;
     color: var(--light-color);
-    padding: 40px;
+
+    margin-bottom: 20px;
+
 }
 
 .card {
@@ -43,6 +48,36 @@ h2 {
     width: 400px;
 
     gap: 40px;
+}
+
+.contacts-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    height: 280px;
+    gap: 15px;
+
+    overflow-y: auto;
+}
+
+.contacts-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contacts-area::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.contacts-area::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+.contacts-area::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(251, 213, 0, 0.3);
 }
 
 .filter {
@@ -81,19 +116,19 @@ h2 {
     font-weight: 300;
     font-size: 20px;
     
-    position: absolute;
-    bottom: 50px;
+    position: fixed;
+    bottom: 20px;
 }
 
 /* ------------------------------- Media Queries -------------------------------------------------------- */
 /* Media Queries para Dispositivos Móviles y Tablets */
 @media (max-width: 768px) {
     .homepage {
-        margin-top: 50px; /* Reducir margen en pantallas más pequeñas */
+        padding: 30px;
     }
 
     h2 {
-        font-size: 2.5rem; /* Reducir tamaño del texto en pantallas más pequeñas */
+        font-size: 2rem; /* Reducir tamaño del texto en pantallas más pequeñas */
         padding: 20px; /* Reducir padding */
     }
 
@@ -101,12 +136,13 @@ h2 {
         width: 300px; /* Hacer la tarjeta más ancha en pantallas pequeñas */
     }
 
-    .card {
-        width: 300px;
+    .contacts-area {
+        width: 350px;
     }
 
     .filter {
         width: 300px;
+        height: 40px;
         font-size: 14px; /* Reducir el tamaño del texto en el filtro */
         padding-left: 15px; /* Reducir el padding */
     }
@@ -120,11 +156,15 @@ h2 {
         font-size: 18px; /* Reducir tamaño de fuente para pantallas pequeñas */
         bottom: 30px; /* Ajustar la posición en pantallas más pequeñas */
     }
+
+    .contacts-area::-webkit-scrollbar {
+        width: 6px;
+    }
 }
 
 @media (max-width: 480px) {
     .homepage {
-        margin-top: 30px; /* Reducir margen en pantallas muy pequeñas */
+        padding: 20px; /* Reducir margen en pantallas muy pequeñas */
     }
 
     h2 {
@@ -149,5 +189,9 @@ h2 {
     .hint {
         font-size: 16px; /* Reducir tamaño de fuente */
         bottom: 20px; /* Ajustar la posición en pantallas muy pequeñas */
+    }
+
+    .contacts-area::-webkit-scrollbar {
+        width: 5px;
     }
 }

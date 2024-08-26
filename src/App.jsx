@@ -19,14 +19,14 @@ const App = () => {
   const [contacts, setContacts] = useState([]) 
 
   // test
-  // const [notes, setNotes] = useState([])
-
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
   const [filter, setFilter] = useState('')
 
-  // filtered contacts
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
+  // filtered contacts -> Solo aplica toLowerCase() si filteredContacts !== undefined o null
+  const filteredContacts = contacts.filter(contact => 
+    contact.name && contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
 
   // axios

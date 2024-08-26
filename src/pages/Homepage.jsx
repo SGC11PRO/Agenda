@@ -19,7 +19,7 @@ const Homepage = ({ filteredContacts, handleChangeFilter, deleteContact, redirec
                         <Filter filteredContacts={filteredContacts} handleChangeFilter={handleChangeFilter} deleteContact={deleteContact}/> 
                     </div>
 
-                    <p className="hint">Usa la sección superior para navegar entre páginas</p>
+                    <footer className="hint">Usa la sección superior para navegar entre páginas</footer>
                 </div>
             </>
         )

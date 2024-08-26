@@ -6,7 +6,7 @@ const Filter = ({ filteredContacts, handleChangeFilter, deleteContact }) => {
         <>
         <input className='filter' type='text' placeholder='Búsqueda' onChange={handleChangeFilter}/>
 
-        <ul>
+        <ul className="contacts-area">
             {filteredContacts.map(contact =>
                 <Contact 
                     contact={contact} 
